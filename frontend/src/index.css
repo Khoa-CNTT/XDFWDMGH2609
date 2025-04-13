@@ -19,3 +19,19 @@ a{
   width: 80%;
   margin: auto;
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width:1050px) {
+  .app {
+    width: 90%;
+  }
+}
