@@ -10,29 +10,27 @@ const StoreContextProvider = (props) => {
     const addToCart = async (itemId) => {
         // console.log(itemId);
         if (!cartItems[itemId]) {
-            setCartItems((prev)=>({...prev, [itemId]: 1}));
+            setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
             console.log('aaaa', cartItems);
         }
         else {
-            setCartItems((prev)=>({...prev, [itemId]:prev[itemId]+1}));
+            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         }
     }
 
     const removeFromCart = async (itemId) => {
-        setCartItems((prev)=>({...prev, [itemId]: prev[itemId]-1}))
+        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
     }
 
     const getTotalCartAmount = () => {
         let totalAmount = 0;
-        // console.log(cartItems);
-        for(const item in cartItems)
-        {   
-            if (cartItems[item]>0) {
-                let itemInfo = food_list.find((product)=>product._id === item);
-                console.log(itemInfo);
-                totalAmount += itemInfo.price* cartItems[item];
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
+                let itemInfo = food_list.find((product) => product._id == item);
+                if (itemInfo) {
+                    totalAmount += itemInfo.price * cartItems[item];
+                }
             }
-            
         }
         return totalAmount;
     }
@@ -52,5 +50,4 @@ const StoreContextProvider = (props) => {
         </StoreContext.Provider>
     )
 }
-
 export default StoreContextProvider;
